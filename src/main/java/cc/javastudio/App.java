@@ -3,6 +3,16 @@ package cc.javastudio;
 public class App {
 
   public static void main(String[] args) {
-    System.out.println("Hello World");
+    Bank cryptoBank = new Bank();
+    Client client = cryptoBank.addClient();
+    Account account = cryptoBank.addAccount(client);
+
+
+
+
+    //System.out.println(client1.toString());
+
+
+
   }
 }
