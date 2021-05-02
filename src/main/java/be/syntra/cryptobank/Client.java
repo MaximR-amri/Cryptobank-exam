@@ -1,6 +1,7 @@
 package be.syntra.cryptobank;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class Client {
     private String clientNumber;
@@ -28,7 +29,15 @@ public class Client {
     public String toString() {
         return "Client{" +
                 "alias='" + alias + '\'' +
-                ", accounts=" + accounts +
+                ", accounts=" + prettyPrintMapKeys(accounts) +
                 '}';
+    }
+
+    private String prettyPrintMapKeys(Map map) {
+        String s = "";
+        for (Object key : map.keySet()) {
+            s += (key +",");
+        }
+        return s.replaceAll(",$", "");
     }
 }

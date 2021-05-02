@@ -83,7 +83,9 @@ public class Bank {
 
     @Override
     public String toString() {
-        return "Bank:\n" + "accounts=\n" + prettyPrintMap(accounts);
+        return "\n**Bank**\n" +
+               "Clients:\n" + prettyPrintMap(clients) +
+               "\nAccounts:\n" + prettyPrintMap(accounts);
     }
 
     private String prettyPrintMap(Map map) {
@@ -91,6 +93,6 @@ public class Bank {
         for (Object key : map.keySet()) {
             s += (key + " = " + map.get(key)) +"\n";
         }
-        return s;
+        return s.replaceAll("\\s+$", "");
     }
 }
