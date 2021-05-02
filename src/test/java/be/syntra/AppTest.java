@@ -1,4 +1,4 @@
-package cc.javastudio;
+package be.syntra;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
