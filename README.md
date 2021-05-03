@@ -36,7 +36,7 @@ Modify the Account toString() method to also print this value for each client
 
 Example Output:
 
-796588302 = Client{alias='Alice', Total Assets Value=17777.5, Accounts=589338783,120119886}
+796588302 = Client{alias='Alice', **Total Assets Value=17777.5**, Accounts=589338783,120119886}
 
 ### 4. transferCoins Method in Bank class
 
