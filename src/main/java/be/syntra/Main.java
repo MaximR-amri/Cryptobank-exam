@@ -3,11 +3,26 @@ package be.syntra;
 import be.syntra.cryptobank.Account;
 import be.syntra.cryptobank.Bank;
 import be.syntra.cryptobank.Client;
+import be.syntra.cryptobank.ExchangeRates;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
 
 public class Main {
   public static void main(String[] args) {
 
     Bank cryptoBank = new Bank();
+    try (InputStream input = new FileInputStream("src/main/resources/rates.properties")) {
+      Properties prop = new Properties();
+      prop.load(input);
+      ExchangeRates.setEthereumRate(Double.parseDouble(prop.getProperty("ethereum")));
+      ExchangeRates.setBitcoinRate(Double.parseDouble(prop.getProperty("bitcoin")));
+    } catch (IOException ex) {
+      ex.printStackTrace();
+    }
     //Create Bob
     Client bob = cryptoBank.addClient("Bob");
     Account bitcoin1 = cryptoBank.addAccount(bob,"Bitcoin");
@@ -30,7 +45,10 @@ public class Main {
     cryptoBank.transferCoins(bitcoin1,bitcoin2,500.0);
     cryptoBank.transferAccount(bitcoin1,alice);
     cryptoBank.withdraw(bitcoin1,250.0);
+
+    //testing transfer of unidentical coins
     cryptoBank.transferCoins(bitcoin1, ethereum1, 250);
+
     System.out.println(cryptoBank);
 
   }

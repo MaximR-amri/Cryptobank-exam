@@ -3,8 +3,16 @@ package be.syntra.cryptobank;
 public class ExchangeRates {
 
 
-    private static Double bitcoinRate = 48550.27;
-    private static Double ethereumRate = 2634.52;
+    private static Double bitcoinRate;
+    private static Double ethereumRate;
+
+    public static void setBitcoinRate(Double bitcoinRate) {
+        ExchangeRates.bitcoinRate = bitcoinRate;
+    }
+
+    public static void setEthereumRate(Double ethereumRate) {
+        ExchangeRates.ethereumRate = ethereumRate;
+    }
 
     public static Double getBitcoinRate() {
         return bitcoinRate;
