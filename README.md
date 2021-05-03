@@ -19,7 +19,6 @@ Modify the Account toString() method to also print this value for each account
 
 Example output:
 
-Accounts:
 Account{accountNumber='652445721', currency='Ethereum', owner=Bob, coins=500.0, **value=12035.0**}
 
 ### 3. Customer Total assets value
@@ -34,9 +33,9 @@ Hint: https://www.geeksforgeeks.org/iterate-map-java/
 
 Modify the Account toString() method to also print this value for each client
 
-Example Output:
+Example Output (when calling bank tostring)
 
-796588302 = Client{alias='Alice', **Total Assets Value=17777.5**, Accounts=589338783,120119886}
+Client{alias='Alice', **Total Assets Value=17777.5**, Accounts=064101964,681038664}
 
 ### 4. transferCoins Method in Bank class
 
