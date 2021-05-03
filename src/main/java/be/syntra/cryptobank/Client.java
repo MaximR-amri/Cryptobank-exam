@@ -25,10 +25,18 @@ public class Client {
         accounts.remove(account.getAccountNumber());
     }
 
+    double getTotalAssetsValue(){
+        double totalAssetValue = 0;
+        for(Map.Entry<String, Account> entry : accounts.entrySet()){
+            totalAssetValue += entry.getValue().getEuroValue();
+        }
+        return totalAssetValue;
+    }
     @Override
     public String toString() {
         return "Client{" +
                 "alias='" + alias + '\'' +
+                ", Total Assets Value= " + getTotalAssetsValue() +
                 ", accounts=" + prettyPrintMapKeys(accounts) +
                 '}';
     }

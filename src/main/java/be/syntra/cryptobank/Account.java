@@ -1,6 +1,8 @@
 package be.syntra.cryptobank;
 
 
+import java.util.Locale;
+
 public class Account {
     private String accountNumber;
     private String currency;
@@ -25,6 +27,9 @@ public class Account {
         this.coins -= coins;
     }
 
+    boolean checkBalance(Double coins){
+        return this.coins - coins >= 0 ? true : false;
+    }
     String getAccountNumber() {
         return accountNumber;
     }
@@ -37,13 +42,30 @@ public class Account {
         return owner;
     }
 
+    public String getCurrency() {
+        return currency;
+    }
+
+    double getEuroValue(){
+        double euroValue;
+        switch(currency.toLowerCase()){
+            case "ethereum":
+                euroValue = (coins * ExchangeRates.getEthereumRate());
+                break;
+            default:
+                euroValue = (coins * ExchangeRates.getBitcoinRate());
+        }
+        return euroValue;
+    }
+
     @Override
     public String toString() {
         return "Account{" +
                 "accountNumber='" + accountNumber + '\'' +
                 ", currency='" + currency + '\'' +
-                ", owner=" + owner.getAlias() +
+                ", owner=" + owner +
                 ", coins=" + coins +
+                ", value=" + getEuroValue() +
                 '}';
     }
 }

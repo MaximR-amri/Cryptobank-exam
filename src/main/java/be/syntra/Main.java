@@ -30,7 +30,7 @@ public class Main {
     cryptoBank.transferCoins(bitcoin1,bitcoin2,500.0);
     cryptoBank.transferAccount(bitcoin1,alice);
     cryptoBank.withdraw(bitcoin1,250.0);
-
+    cryptoBank.transferCoins(bitcoin1, ethereum1, 250);
     System.out.println(cryptoBank);
 
   }

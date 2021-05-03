@@ -46,11 +46,17 @@ public class Bank {
     // Transfers coins from one account to another
     // Check if the accounts have the same cryptocurrency
     public void transferCoins(Account origin, Account destination, double coins) {
-        if (!destination.equalCurrency(origin)) {
-            throw new UnsupportedOperationException("Currencies or not the same");
+        if(!origin.checkBalance(coins)){
+            throw new UnsupportedOperationException("Unsufficient funds, can not make transfer.");
         }
-        origin.widraw(coins);
-        destination.deposit(coins);
+        if (!destination.equalCurrency(origin)) {
+            origin.widraw(coins);
+            Double euroValueCoins = ExchangeRates.toEuro(coins, origin.getCurrency());
+            destination.deposit(ExchangeRates.toCrypto(euroValueCoins, destination.getCurrency()));
+        } else {
+            origin.widraw(coins);
+            destination.deposit(coins);
+        }
     }
 
     // Transfers an account to a new owner
