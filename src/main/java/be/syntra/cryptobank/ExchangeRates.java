@@ -45,6 +45,7 @@ public class ExchangeRates {
         switch (currency.toLowerCase()){
             case "ethereum":
                 coins = euro / ethereumRate;
+                break;
             default:
                 coins = euro / bitcoinRate;
         }
